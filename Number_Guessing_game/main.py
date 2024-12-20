@@ -37,6 +37,7 @@ def game():
     global SECRET_NUM, GUESS, ATTEMPTS
 
     print(logo)
+    print("Welcome to the Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100.")
     SECRET_NUM = generate_random_number()
 
