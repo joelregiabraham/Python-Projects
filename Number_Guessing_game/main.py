@@ -32,9 +32,26 @@ def mode_selector():
         print("Invalid mode. Setting default mode to 'easy'.")
         ATTEMPTS = 10
 
+def check_guess():
+    global  ATTEMPTS, GUESS
+    while ATTEMPTS > 0:
+        GUESS = make_a_guess()
+
+        if GUESS > SECRET_NUM:
+            print("Too high")
+        elif GUESS < SECRET_NUM:
+            print("Too low")
+        elif GUESS == SECRET_NUM:
+            print(f"Congratulations! You've guessed the number {SECRET_NUM}.")
+            return
+
+        ATTEMPTS -= 1
+        print(f"You have {ATTEMPTS} remaining.")
+
+    print(f"You ran out of attempts, the secret number was {SECRET_NUM} Better luck next time!")
 
 def game():
-    global SECRET_NUM, GUESS, ATTEMPTS
+    global SECRET_NUM, ATTEMPTS
 
     print(logo)
     print("Welcome to the Number Guessing Game!")
@@ -45,20 +62,10 @@ def game():
 
     print(f"You have {ATTEMPTS} remaining to guess the number.")
 
-    while ATTEMPTS > 0:
-        GUESS = make_a_guess()
-
-        if GUESS > SECRET_NUM:
-            print("Too high")
-        elif GUESS < SECRET_NUM:
-            print("Too low")
-        elif GUESS == SECRET_NUM:
-            print(f"Congratulations! You've guessed the number {SECRET_NUM}.")
-
-        ATTEMPTS -= 1
-        print(f"You have {ATTEMPTS} remaining.")
-
-    print(f"You ran out of attempts, the secret number was {SECRET_NUM} Better luck next time!")
+    # For debugging
+    # print(f"the secret number is {SECRET_NUM}")
+    
+    check_guess()
 
 # Start the game
 game()
